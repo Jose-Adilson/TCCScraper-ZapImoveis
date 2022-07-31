@@ -64,7 +64,7 @@ for (int i = 1; i <= 3; i++)
         var mapUrl = htmlImovel.DocumentNode.SelectSingleNode("//iframe[@class='map-embed__iframe']/@src").GetAttributeValue<string>("src", String.Empty);
         var desc = htmlImovel.DocumentNode.SelectSingleNode("//div[@class='amenities__description text-regular text-margin-zero']") != null ? htmlImovel.DocumentNode.SelectSingleNode("//div[@class='amenities__description text-regular text-margin-zero']").InnerText : "";
 
-        imoveis.Add(new Imovel(title, address, price, rooms, desc, images, mapUrl));
+        imoveis.Add(new Imovel(id, title, address, price, rooms, desc, images, mapUrl));
         driver.Close();
         driver.SwitchTo().Window(driver.WindowHandles.Last());
     }
