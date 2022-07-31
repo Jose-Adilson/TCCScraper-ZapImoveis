@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    public class Imovel
+    {
+        public string title { get; set; }
+        public string address { get; set; }
+        public string price { get; set; }
+        public string rooms { get; set; }
+        public string desc { get; set; }
+        public List<string> images { get; set; }
+        public string map { get; set; }
+
+        public Imovel(string title, string address, string price, string rooms, string desc, List<string> images, string map)
+        {
+            this.title = title;
+            this.address = address;
+            this.price = price;
+            this.rooms = rooms;
+            this.desc = desc;
+            this.images = images;
+            this.map = map;
+        }
+    }
+}
