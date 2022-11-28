@@ -10,8 +10,9 @@ using System.Text.RegularExpressions;
 
 List<Imovel> imoveis = new();
 var driver = new ChromeDriver();
+ScraperZap.dbconnect con = new ScraperZap.dbconnect();
 
-for (int i = 1; i <= 3; i++)
+for (int i = 1; i <= 1; i++)
 {
     var html = new HtmlDocument();
 
@@ -27,9 +28,10 @@ for (int i = 1; i <= 3; i++)
         var htmlImovel = new HtmlDocument();
         var actions = new Actions(driver);
 
-        actions.MoveToElement(driver.FindElement(By.XPath($"//div[@data-id = '{id}']")));
+        actions.MoveToElement(driver.FindElement(By.XPath($"//body/main[@id='app']/section[@class='results__section']/div[@class='results__wrapper']/div[@class='results__list js-results']/div[@class='listings__wrapper']/div[@class='listings__container']/div[1]/div[1]/div[2]/div[1]")));
         actions.Perform();
         driver.FindElement("xpath", $"//div[@data-id = '{id}']").Click();
+        Thread.Sleep(1000);
         SwitchToWindow(x => x.Url.Contains(id));
         htmlImovel.LoadHtml(driver.PageSource);
 
@@ -44,7 +46,7 @@ for (int i = 1; i <= 3; i++)
         {
             price = Regex.Replace(htmlImovel.DocumentNode.SelectSingleNode("//ul[@class='main-prices hybrid-business']/li[2]/strong").InnerText, @"[^\d\.\,]", "");
         }
-        var rooms = htmlImovel.DocumentNode.SelectSingleNode("//span[@itemprop='numberOfRooms']") != null ? htmlImovel.DocumentNode.SelectSingleNode("//span[@itemprop='numberOfRooms']").InnerText : "";
+        var rooms = htmlImovel.DocumentNode.SelectSingleNode("//span[@itemprop='numberOfRooms']") != null ? htmlImovel.DocumentNode.SelectSingleNode("//span[@itemprop='numberOfRooms']").InnerText : "0";
         List<string> images = new();
 
         if (htmlImovel.DocumentNode.SelectNodes("//li[@class='js-carousel-item carousel__item']/img/@src") != null)
@@ -63,12 +65,22 @@ for (int i = 1; i <= 3; i++)
         htmlImovel.LoadHtml(driver.PageSource);
         var mapUrl = htmlImovel.DocumentNode.SelectSingleNode("//iframe[@class='map-embed__iframe']/@src").GetAttributeValue<string>("src", String.Empty);
         var desc = htmlImovel.DocumentNode.SelectSingleNode("//div[@class='amenities__description text-regular text-margin-zero']") != null ? htmlImovel.DocumentNode.SelectSingleNode("//div[@class='amenities__description text-regular text-margin-zero']").InnerText : "";
-
-        imoveis.Add(new Imovel(id, title, address, price, rooms, desc, images, mapUrl));
+        var matches = Regex.Matches(rooms, @"\d+");
+        var quarts = "";
+        foreach (var match in matches)
+        {
+            quarts += match;
+        }
+        imoveis.Add(new Imovel(id, title, address, price, quarts, desc, images, mapUrl));
         driver.Close();
         driver.SwitchTo().Window(driver.WindowHandles.Last());
     }
 
+}
+
+foreach (var imovel in imoveis)
+{
+    con.MainForm(imovel);
 }
 var imoveisJson = JsonConvert.SerializeObject(imoveis);
 File.WriteAllText(@"C:\Users\Chron\Documents\ZapImoveis.json", imoveisJson);
