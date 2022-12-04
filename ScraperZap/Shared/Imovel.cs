@@ -1,5 +1,4 @@
-﻿
-namespace ConsoleApp1
+﻿namespace ScraperZap.Shared
 {
     public class Imovel
     {

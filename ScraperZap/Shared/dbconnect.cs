@@ -1,9 +1,8 @@
 ﻿using System.Data;
-using ConsoleApp1;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 
-namespace ScraperZap
+namespace ScraperZap.Shared
 {
     internal class dbconnect
     {
@@ -36,13 +35,13 @@ namespace ScraperZap
 
                 mConn.Open();
 
-                string sql = "INSERT INTO Immobile (Title, Address, Price, Rooms, `Desc`, Images, Map) VALUES ('"+ imovel.title + "', '" + imovel.address + "', " + imovel.price + ", " + imovel.rooms + ", '" + imovel.desc + "', '" + JsonConvert.SerializeObject(imovel.images) + "', '" + imovel.map + "')";
+                string sql = "INSERT INTO Immobile (Title, Address, Price, Rooms, `Desc`, Images, Map) VALUES ('" + imovel.title + "', '" + imovel.address + "', " + imovel.price + ", " + imovel.rooms + ", '" + imovel.desc + "', '" + JsonConvert.SerializeObject(imovel.images) + "', '" + imovel.map + "')";
                 MySqlCommand cmd = new MySqlCommand(sql, mConn);
                 cmd.ExecuteNonQuery();
 
             }
 
-            catch (System.Exception e)
+            catch (Exception e)
 
             {
 
