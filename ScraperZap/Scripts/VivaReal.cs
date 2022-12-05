@@ -69,6 +69,7 @@ namespace ScraperZap.Scripts
                                     images.Add(image.GetAttributeValue<string>("src", string.Empty));
                             }
                         }
+                        var bairroId = htmlImovel.DocumentNode.SelectSingleNode("//*[@id=\"js-site-main\"]/div[2]/div[1]/div[1]/div/ol/li[3]/ol/li[3]/a") != null ? htmlImovel.DocumentNode.SelectSingleNode("//*[@id=\"js-site-main\"]/div[2]/div[1]/div[1]/div/ol/li[3]/ol/li[3]/a").InnerText : "0";
 
                         actions.MoveToElement(driver.FindElement(By.XPath("//div[@class='js-fullscreen-lead-vue fullsized-lead vue-lead-form']")));
                         actions.Perform();
@@ -85,7 +86,7 @@ namespace ScraperZap.Scripts
                             {
                                 quarts += match;
                             }
-                            imoveis.Add(new Imovel(id, title, address, price, quarts, desc, images, mapUrl));
+                            imoveis.Add(new Imovel(id, title, address, price, quarts, desc, images, mapUrl, id, bairroId));
                             driver.Close();
                             driver.SwitchTo().Window(driver.WindowHandles.Last());
                         }

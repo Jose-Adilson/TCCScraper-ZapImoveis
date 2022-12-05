@@ -10,8 +10,11 @@
         public string desc { get; set; }
         public List<string> images { get; set; }
         public string map { get; set; }
+        public string externalId { get; set; }
+        public string bairroId { get; set; }
 
-        public Imovel(string id, string title, string address, string price, string rooms, string desc, List<string> images, string map)
+
+        public Imovel(string id, string title, string address, string price, string rooms, string desc, List<string> images, string map, string externalId, string bairroId)
         {
             this.id = id;
             this.title = title;
@@ -21,6 +24,8 @@
             this.desc = desc;
             this.images = images;
             this.map = map;
+            this.externalId = externalId;
+            this.bairroId = bairroId;
         }
     }
 }

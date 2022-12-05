@@ -92,7 +92,7 @@ namespace ScraperZap.Scripts
                             {
                                 quarts += match;
                             }
-                            imoveis.Add(new Imovel(id, title, address, price, quarts, desc, images, mapUrl));
+                            imoveis.Add(new Imovel(id, title, address, price, quarts, desc, images, mapUrl, "1", "1"));
                             driver.Close();
                             driver.SwitchTo().Window(driver.WindowHandles.Last());
                         }
