@@ -12,14 +12,13 @@ namespace ScraperZap.Scripts
 {
     internal class ZapImoveis
     {
-        public void ScriptZap()
+        public void ScriptZap(int i, int fim)
         {
-            int i = 1;
             WindowSwitch change = new WindowSwitch();
             List<Imovel> imoveis = new();
             dbconnect con = new dbconnect();
             var driver = new ChromeDriver();
-            while (true)
+            while (i <= fim)
             {
 
                 var html = new HtmlDocument();

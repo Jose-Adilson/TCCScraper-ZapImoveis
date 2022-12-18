@@ -12,8 +12,9 @@ namespace ScraperZap.Scripts
 {
 	internal class KondorImoveis
 	{
-		public void ScriptKondor()
+		public void ScriptKondor(int fim)
 		{
+			int i = 1;
 			int cont;
 			WindowSwitch change = new WindowSwitch();
 			List<Imovel> imoveis = new();
@@ -21,7 +22,7 @@ namespace ScraperZap.Scripts
 			var driver = new ChromeDriver();
             driver.Navigate().GoToUrl($"https://www.kondorimoveis.com.br/alugar/Apartamento/todos-bairros/Curitiba/?typeBussiness=2&tipo_busca=0&endereco=&cidades=3314&bairros%5B%5D=155&bairros%5B%5D=106&bairros%5B%5D=77&bairros%5B%5D=58&bairros%5B%5D=16&bairros%5B%5D=91&bairros%5B%5D=18&bairros%5B%5D=90&bairros%5B%5D=57&bairros%5B%5D=114&bairros%5B%5D=69&bairros%5B%5D=15&bairros%5B%5D=13&bairros%5B%5D=88&bairros%5B%5D=76&bairros%5B%5D=19&bairros%5B%5D=124&bairros%5B%5D=60&bairros%5B%5D=138&bairros%5B%5D=80&bairros%5B%5D=42&bairros%5B%5D=3&bairros%5B%5D=52&bairros%5B%5D=1038&bairros%5B%5D=104&bairros%5B%5D=70&bairros%5B%5D=68&bairros%5B%5D=1267&bairros%5B%5D=1&bairros%5B%5D=20&bairros%5B%5D=1268&bairros%5B%5D=47&bairros%5B%5D=26&bairros%5B%5D=22&bairros%5B%5D=610&bairros%5B%5D=31&bairros%5B%5D=1276&bairros%5B%5D=34&bairros%5B%5D=9&bairros%5B%5D=1258&bairros%5B%5D=782&bairros%5B%5D=8&bairros%5B%5D=141&bairros%5B%5D=33&bairros%5B%5D=28&bairros%5B%5D=123&bairros%5B%5D=86&bairros%5B%5D=97&bairros%5B%5D=1242&bairros%5B%5D=1216&bairros%5B%5D=12&bairros%5B%5D=1252&bairros%5B%5D=75&bairros%5B%5D=79&bairros%5B%5D=50&bairros%5B%5D=63&bairros%5B%5D=2&bairros%5B%5D=45&bairros%5B%5D=4&bairros%5B%5D=118&bairros%5B%5D=23&bairros%5B%5D=94&bairros%5B%5D=14&bairros%5B%5D=103&bairros%5B%5D=82&bairros%5B%5D=274&bairros%5B%5D=61&bairros%5B%5D=38&bairros%5B%5D=161&bairros%5B%5D=73&bairros%5B%5D=54&bairros%5B%5D=965&bairros%5B%5D=21&bairros%5B%5D=144&bairros%5B%5D=84&bairros%5B%5D=44&bairros%5B%5D=72&bairros%5B%5D=66&bairros%5B%5D=98&bairros%5B%5D=78&bairros%5B%5D=95&bairros%5B%5D=10&bairros%5B%5D=1019&bairros%5B%5D=1032&bairros%5B%5D=51&bairros%5B%5D=7&bairros%5B%5D=24&tipoImovel%5B%5D=res_3&tipoImovel%5B%5D=res_1&tipoImovel%5B%5D=res_15&tipoImovel%5B%5D=res_18&precoMin=0&precoMax=999999999&numeroQuartos=&numeroSuites=&numeroVagas=#");
             driver.Manage().Window.Maximize();
-            while (true)
+            while (i <= fim)
 			{
                 cont = 1;
                 var html = new HtmlDocument();
@@ -138,6 +139,7 @@ namespace ScraperZap.Scripts
 				{
 					con.MainForm(imovel);
 				}
+				i++;
                 driver.FindElement(By.XPath("//a[@onclick='nextPage()']")).Click();
                 Thread.Sleep(3000);
 

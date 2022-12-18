@@ -12,15 +12,14 @@ namespace ScraperZap.Scripts
 {
     internal class Habitec
     {
-        public void ScriptHabitec()
+        public void ScriptHabitec(int i, int fim)
         {
-            int i = 1;
             int cont;
             WindowSwitch change = new WindowSwitch();
             List<Imovel> imoveis = new();
             dbconnect con = new dbconnect();
             var driver = new ChromeDriver();
-            while (true)
+            while (i <= fim)
             {
 
                 var html = new HtmlDocument();
