@@ -76,6 +76,8 @@ namespace ScraperZap.Scripts
                             }
                         }
 
+                        var bairroId = htmlImovel.DocumentNode.SelectSingleNode("//nav[@class='breadcrumb__nav']/ol[1]/li[4]/a[1]") != null ? htmlImovel.DocumentNode.SelectSingleNode("//nav[@class='breadcrumb__nav']/ol[1]/li[4]/a[1]").InnerText : "";
+
                         actions.MoveToElement(driver.FindElement(By.XPath("//div[@class='report-listing__container container']")));
                         actions.Perform();
                         //driver.FindElement(By.XPath("//article[@class='map__wrapper']/div[2]/button")).Click();
@@ -92,7 +94,7 @@ namespace ScraperZap.Scripts
                             {
                                 quarts += match;
                             }
-                            imoveis.Add(new Imovel(id, title, address, price, quarts, desc, images, mapUrl, "1", "1"));
+                            imoveis.Add(new Imovel(id, title, address, price, quarts, desc, images, mapUrl, id, bairroId));
                             driver.Close();
                             driver.SwitchTo().Window(driver.WindowHandles.Last());
                         }
