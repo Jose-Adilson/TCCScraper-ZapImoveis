@@ -8,8 +8,12 @@ class Program
     {
         ZapImoveis zap = new();
         VivaReal viva = new();
+        KondorImoveis kondor = new();
+        Habitec habitec = new();
         //zap.ScriptZap();
-        viva.ScriptViva();
+        //viva.ScriptViva();
+        kondor.ScriptKondor();
+        //habitec.ScriptHabitec();
     }
 
 }

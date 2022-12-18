@@ -60,7 +60,7 @@ namespace ScraperZap.Scripts
 
                         var rooms = htmlImovel.DocumentNode.SelectSingleNode("//li[@title='Quartos']") != null ? htmlImovel.DocumentNode.SelectSingleNode("//li[@title='Quartos']").InnerText : "0";
                         List<string> images = new();
-
+                        
                         if (htmlImovel.DocumentNode.SelectNodes("//li[@class='carousel__slide js-carousel-item-wrapper']/img/@src") != null)
                         {
                             foreach (var image in htmlImovel.DocumentNode.SelectNodes("//li[@class='carousel__slide js-carousel-item-wrapper']/img/@src"))
