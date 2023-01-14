@@ -75,9 +75,9 @@ namespace ScraperZap.Shared
                 }
 
                 
-
+                mConn.Close();
             }
-
+            
             catch (Exception e)
 
             {
