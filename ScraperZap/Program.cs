@@ -10,10 +10,10 @@ class Program
         VivaReal viva = new();
         KondorImoveis kondor = new();
         Habitec habitec = new();
-        zap.ScriptZap(2, 2);
-        viva.ScriptViva(1, 1);
-        kondor.ScriptKondor(1);
-        habitec.ScriptHabitec(1, 1);
+        zap.ScriptZap(1, 1);
+        //viva.ScriptViva(1, 1);
+        //kondor.ScriptKondor(40);
+        //habitec.ScriptHabitec(1, 1);
     }
 
 }
