@@ -40,13 +40,10 @@ namespace ScraperZap.Shared
 
                 string consulta = "SELECT externalId from Immobile WHERE externalId = " + imovel.externalId;
                 MySqlCommand cmd1 = new MySqlCommand(consulta, mConn);
-                //cmd1.ExecuteNonQuery();
-                //cmd1.ExecuteScalar();
                 var retorno = cmd1.ExecuteScalar();
                 System.Diagnostics.Debug.WriteLine("Consulta - " + consulta);
                 System.Diagnostics.Debug.WriteLine("Retorno - " + retorno);
 
-                //if(cmd1 == null || cmd1.Equals(""))
                 if (retorno == null)
                 {
                     imovel.bairroId = imovel.bairroId.ToLower();
@@ -62,12 +59,9 @@ namespace ScraperZap.Shared
                     imovel.price = Regex.Replace(imovel.price, "[\\.]", "");
                     imovel.price = Regex.Replace(imovel.price, "[\\,]", ".");
 
-                    string sql = "INSERT INTO Immobile (Title, Address, Price, Rooms, `Desc`, Images, Map, externalId, bairroId) WITH BairroNovo AS (" +
-                        "SELECT '" + imovel.title + "' AS Title, '" + imovel.address + "' AS Address,  " + imovel.price + " AS Price, " + imovel.rooms + " AS Rooms, '" + imovel.desc + "' AS `Desc`, '" + JsonConvert.SerializeObject(imovel.images) + "' AS Images, '" + imovel.map + "' AS Map, '" + imovel.externalId + "' AS externalId, (SELECT Id FROM Bairro where Name like '" + imovel.bairroId.Trim() +"') AS bairroId)" +
-                        "SELECT Title, Address, Price, Rooms, `Desc`, Images, Map, externalId, bairroId FROM BairroNovo";
-                    
-
-                        //"VALUES ('" + imovel.title + "', '" + imovel.address + "', " + imovel.price + ", " + imovel.rooms + ", '" + imovel.desc + "', '" + JsonConvert.SerializeObject(imovel.images) + "', '" + imovel.map + "', '" + imovel.externalId + "', (SELECT Id FROM Bairro where Name like '" + imovel.bairroId + "'))";
+                    string sql = "INSERT INTO Immobile (Title, Address, Price, Rooms, `Desc`, Images, Map, externalId, bairroId, site_url) WITH BairroNovo AS (" +
+                        "SELECT '" + imovel.title + "' AS Title, '" + imovel.address + "' AS Address,  " + imovel.price + " AS Price, " + imovel.rooms + " AS Rooms, '" + imovel.desc + "' AS `Desc`, '" + JsonConvert.SerializeObject(imovel.images) + "' AS Images, '" + imovel.map + "' AS Map, '" + imovel.externalId + "' AS externalId, (SELECT Id FROM Bairro where Name like '" + imovel.bairroId.Trim() + "' ) AS bairroId, '" + imovel.siteUrl + "' AS site_url)" +
+                        "SELECT Title, Address, Price, Rooms, `Desc`, Images, Map, externalId, bairroId, site_url FROM BairroNovo";
                     MySqlCommand cmd = new MySqlCommand(sql, mConn);
                     cmd.ExecuteNonQuery();
                 }
@@ -75,7 +69,6 @@ namespace ScraperZap.Shared
                 {
                     string update = "SET @@session.time_zone='-03:00'; UPDATE Immobile SET webscraping_date = timestamp(current_timestamp()), in_use = true WHERE externalId = " + imovel.externalId;
                     MySqlCommand cmd2 = new MySqlCommand(update, mConn);
-                    //cmd2.ExecuteNonQuery();
                     var retorno2 = cmd2.ExecuteNonQuery();
                     System.Diagnostics.Debug.WriteLine("Update - " + update);
                     System.Diagnostics.Debug.WriteLine("Retorno - " + retorno2);

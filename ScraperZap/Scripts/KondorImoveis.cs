@@ -110,8 +110,8 @@ namespace ScraperZap.Scripts
                             System.Diagnostics.Debug.WriteLine("mapUrl - " + mapUrl);
                             var desc = htmlImovel.DocumentNode.SelectSingleNode("//p[@class='texto']") != null ? htmlImovel.DocumentNode.SelectSingleNode("//p[@class='texto']").InnerText : "";
                             System.Diagnostics.Debug.WriteLine("desc - " + desc);
-
-							imoveis.Add(new Imovel(id, title, address, price, rooms, desc, images, mapUrl, id, bairroId));
+                            var url = driver.Url;
+                            imoveis.Add(new Imovel(id, title, address, price, rooms, desc, images, mapUrl, id, bairroId, url));
 							driver.Close();
 							driver.SwitchTo().Window(driver.WindowHandles.Last());
                             Thread.Sleep(1000);
@@ -145,6 +145,7 @@ namespace ScraperZap.Scripts
 
 
             }
-		}
+            driver.Close();
+        }
 	}
 }

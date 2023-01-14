@@ -89,8 +89,8 @@ namespace ScraperZap.Scripts
                             htmlImovel.LoadHtml(driver.PageSource);
                             var mapUrl = htmlImovel.DocumentNode.SelectSingleNode("//a[@title='Abrir esta área no Google Maps (abre uma nova janela)']").GetAttributeValue<string>("href", string.Empty);
                             var desc = htmlImovel.DocumentNode.SelectSingleNode("//p[@class='p-mais-descri']") != null ? htmlImovel.DocumentNode.SelectSingleNode("//p[@class='p-mais-descri']").InnerText : "";
-                            
-                            imoveis.Add(new Imovel(id, title, address, price, rooms, desc, images, mapUrl, id, bairroId));                            
+                            var url = driver.Url;
+                            imoveis.Add(new Imovel(id, title, address, price, rooms, desc, images, mapUrl, id, bairroId, url));                            
                             driver.Close();
                             driver.SwitchTo().Window(driver.WindowHandles.Last());
 
@@ -120,6 +120,7 @@ namespace ScraperZap.Scripts
                 i++;                
 
             }
+            driver.Close();
         }
     }
 }
