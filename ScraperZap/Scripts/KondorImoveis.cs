@@ -103,13 +103,14 @@ namespace ScraperZap.Scripts
                         //driver.FindElement(By.XPath("//article[@class='map__wrapper']/div[2]/button")).Click();
                         try
 						{
-							driver.FindElement(By.XPath("//label[normalize-space()='Mapa']")).Click();
-							Thread.Sleep(2000);
-							htmlImovel.LoadHtml(driver.PageSource);
-							var mapUrl = htmlImovel.DocumentNode.SelectSingleNode("//iframe[@id='iframeMapa']").GetAttributeValue<string>("src", string.Empty);
-                            System.Diagnostics.Debug.WriteLine("mapUrl - " + mapUrl);
+							//driver.FindElement(By.XPath("//label[normalize-space()='Mapa']")).Click();
+							//Thread.Sleep(2000);
+							//htmlImovel.LoadHtml(driver.PageSource);
+							//var mapUrl = htmlImovel.DocumentNode.SelectSingleNode("//iframe[@id='iframeMapa']").GetAttributeValue<string>("src", string.Empty);
+							var mapUrl = "https://maps.google.com/maps?ll=-25.479408,-49.287415&amp;z=15&amp;t=m&amp;hl=pt-BR&amp;gl=US&amp;mapclient=apiv3";
+                            Console.WriteLine("mapUrl - " + mapUrl);
                             var desc = htmlImovel.DocumentNode.SelectSingleNode("//p[@class='texto']") != null ? htmlImovel.DocumentNode.SelectSingleNode("//p[@class='texto']").InnerText : "";
-                            System.Diagnostics.Debug.WriteLine("desc - " + desc);
+                            Console.WriteLine("desc - " + desc);
                             var url = driver.Url;
                             imoveis.Add(new Imovel(id, title, address, price, rooms, desc, images, mapUrl, id, bairroId, url));
 							driver.Close();

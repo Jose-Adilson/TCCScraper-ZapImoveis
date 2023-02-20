@@ -12,9 +12,9 @@ class Program
         KondorImoveis kondor = new();
         Habitec habitec = new();
         dbmaintain dbmaintain = new();
-        //zap.ScriptZap(1, 1);
-        //viva.ScriptViva(1, 1);
-        //kondor.ScriptKondor(40);
+        zap.ScriptZap(1, 1);
+        viva.ScriptViva(1, 1);
+        kondor.ScriptKondor(1);
         habitec.ScriptHabitec(1, 1);
         dbmaintain.MainForm();
 

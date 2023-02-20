@@ -24,7 +24,8 @@ namespace ScraperZap.Scripts
                 var html = new HtmlDocument();
 
 
-                driver.Navigate().GoToUrl($"https://www.zapimoveis.com.br/aluguel/imoveis/pr+curitiba/?onde=,Paraná,Curitiba,,,,,city,BR>Parana>NULL>Curitiba,-25.437238,-49.269973,&transacao=Aluguel&tipo=Imóvel%20usado&pagina={i}");
+                driver.Navigate().GoToUrl($"https://www.zapimoveis.com.br/aluguel/apartamentos/pr+curitiba/?onde=,Paran,Curitiba,,,,,city,BR>Parana>NULL>Curitiba,-25.437238,-49.269973,%2Faluguel%2Fimoveis%2Fpr%2Bcuritiba%2F&transacao=Aluguel&tipo=Imóvel%20usado&tipos=apartamento_residencial,studio_residencial,kitnet_residencial,casa_residencial,condominio_residencial,casa-vila_residencial,cobertura_residencial,flat_residencial,loft_residencial,lote-terreno_residencial,granja_residencial&pagina={i}");
+            
                 html.LoadHtml(driver.PageSource);
 
                 var lista = html.DocumentNode.SelectNodes("//*[@class='card-container js-listing-card']");
