@@ -30,7 +30,7 @@ Para instalar o WebScraping, siga estas etapas:
 
 O WebScraping realizará a busca de imóveis em quatro diferentes plataformas: **ZapImóveis, VivaReal, Habitec e Kondor**.
 
-Ná página de execução do script, terá a chamada das quatro diferentes funções que realizarão a busca dos imóveis em suas respectivas páginas. Entretanto, as funções possuem passagem de parâmetros. Nas plataformas do ZapImóveis e VivaReal, são passados dois parâmetros juntos da função, o início da página em que o webscraping realizará a busca e o quantas páginas será buscado. Já no exemplo do Kondor é passado somente um parâmetro, o número de páginas que realizará a busca.
+Ná página de execução do script, terá a chamada das quatro diferentes funções que realizarão a busca dos imóveis em suas respectivas páginas. Entretanto, as funções possuem passagem de parâmetros. Nas plataformas do ZapImóveis, VivaReal e Habitec, são passados dois parâmetros juntos da função, o início da página em que o webscraping realizará a busca e o quantas páginas será buscado. Já no exemplo do Kondor é passado somente um parâmetro, o número de páginas que realizará a busca.
 
 ##  Colaboradores
 
