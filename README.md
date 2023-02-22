@@ -6,16 +6,17 @@ O Chromedriver é um recursos de software utilizado por pacotes de programação
 
 Selenium é um conjunto de ferramentas de código aberto multiplataforma, usado para testar aplicações web pelo browser de forma automatizada. Ele executa testes de funcionalidades da aplicação web e testes de compatibilidade entre browser e plataformas diferentes. O Selenium suporta diversas linguagens de programação, como por exemplo C#, Java e Python, e vários navegadores web como o Chrome e o Firefox.
 
-## Configuração do ambiente para executar o Aplicativo
+## Configuração do ambiente para executar o WebScraping
 
 
 Antes de iniciar, você precisará ter o seguinte instalado em sua máquina:
 
-## Visual Studio: [Instruções de instalação do Xcode](https://visualstudio.microsoft.com/pt-br/downloads/)
-## Google Chrome: [Instruções de instalação do Xcode](https://www.google.com/intl/pt-BR/chrome/)
+## Visual Studio: [Instruções de instalação do Visual Studio](https://visualstudio.microsoft.com/pt-br/downloads/)
+## Google Chrome: [Instruções de instalação do Google Chrome](https://www.google.com/intl/pt-BR/chrome/)
+## Banco de Dados conforme solicitado via API: [Instruções de instalação do Banco de Dados](https://github.com/jackson-jk1/EasyHomeApi)
 
 
-##  Instalando EasyHomeFlutter
+##  Instalando WebScraping
 
 Para instalar o WebScraping, siga estas etapas:
 
