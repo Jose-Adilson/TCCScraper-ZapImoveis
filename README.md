@@ -26,6 +26,12 @@ Para instalar o WebScraping, siga estas etapas:
 * Certifique que a versão do Chrome é a mesma do Chromedriver que está sendo utilizada no projeto
 * Execute o Webscraping através do Visual Studio
 
+##  Funcionamento do WebScraping
+
+O WebScraping realizará a busca de imóveis em quatro diferentes plataformas: **ZapImóveis, VivaReal, Habitec e Kondor**.
+
+Ná página de execução do script, terá a chamada das quatro diferentes funções que realizarão a busca dos imóveis em suas respectivas páginas. Entretanto, as funções possuem passagem de parâmetros. Nas plataformas do ZapImóveis e VivaReal, são passados dois parâmetros juntos da função, o início da página em que o webscraping realizará a busca e o quantas páginas será buscado. Já no exemplo do Kondor é passado somente um parâmetro, o número de páginas que realizará a busca.
+
 ##  Colaboradores
 
 Agradecemos às seguintes pessoas que contribuíram para este projeto:
