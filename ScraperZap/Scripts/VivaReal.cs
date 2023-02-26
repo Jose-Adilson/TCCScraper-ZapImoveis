@@ -37,7 +37,7 @@ namespace ScraperZap.Scripts
                         var htmlImovel = new HtmlDocument();
                         var actions = new Actions(driver);
 
-                        actions.MoveToElement(driver.FindElement(By.XPath($"(//article[@class='property-card__container js-property-card'])[2]")));
+                        actions.MoveToElement(driver.FindElement(By.XPath($"(//article[@class='property-card__container js-property-card '])[2]")));
                         actions.Perform();
                         try
                         {
